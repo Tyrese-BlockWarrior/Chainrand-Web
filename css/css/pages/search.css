@@ -1,0 +1,83 @@
+/* ====== SEARCH ====== */
+
+.page[path=search] .form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+.page[path=search] .search button {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+.page[path=search] .query {
+    width: 100%;
+    margin: 12px 0 12px 0;
+}
+.page[path=search] .query input {
+    width: 100%;
+    margin: 0 auto;
+}
+.page[path=search] input[type=submit] {
+    display: none;
+}
+.page[path=search] .radio input{
+    display: none;
+}
+.page[path=search] .radio {
+    margin-right: 6px;
+    position: relative; 
+    cursor: pointer;
+}
+.page[path=search] .radio label {
+    padding: 0 6px 0 25px;
+    cursor: pointer;
+}
+.page[path=search] .radio .check {
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
+    border: 2px solid #aaa;
+    pointer-events: none;
+}
+.page[path=search] .radio .check > div {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 8px;
+    margin: 2px 0 0 2px;
+}
+.page[path=search] .radio input:checked + .check {
+    border: 2px solid #36b;
+}
+.page[path=search] .radio input:checked + .check > div {
+    background: #36b;
+}
+.page[path=search] .radio:hover .check {
+    border: 2px solid #58d;
+}
+.page[path=search] .type {
+    display: inline-block;
+    width: 70%;
+}
+.page[path=search] .chain {
+    display: inline-block;   
+    width: 30%;
+    text-align: right;
+}
+.page[path=search] .params {
+    padding: 6px 0 6px 0;
+}
+.page[path=search] .chain {
+    position: relative;
+}
+.page[path=search] .chain .icon-angle-down {
+    position: absolute;
+    right: 4px;
+    top: 3px;
+    font-size: 18px;
+    pointer-events: none;
+}
