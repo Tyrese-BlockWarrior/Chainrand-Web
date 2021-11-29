@@ -1,0 +1,80 @@
+.modal-alert, .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+}
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    opacity: 0;
+    transition: 0.2s opacity;
+    z-index: -1;
+}
+.modal-alert.active .modal-overlay,
+.modal.active .modal-overlay {
+    opacity: 0.6;
+}
+.modal-dialog {
+    max-width: 500px;
+    width: 90%;
+    margin: 1.75rem auto;
+    box-sizing: border-box;
+}
+.modal-header {
+    padding: 18px;
+    border-bottom: 1px solid #666;
+}
+.modal-content {
+    background: #fff;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateY(-30px);
+    z-index: 0;
+    border: 1px solid #999;
+    border-radius: 6px;
+    color: #333;
+}
+.modal-alert.active .modal-content,
+.modal.active .modal-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+.modal-close {   
+    float: right;
+    margin-top: 3px;
+}
+.modal-close svg {
+    stroke: #333;
+    stroke-width: 2px;
+}
+.modal-title {
+    font-size: 20px;
+}
+.modal-body {
+    border-bottom: 1px solid #666;  
+    min-height: 10px;
+}
+.modal-footer {
+    min-height: 10px;
+}
+.modal-shown-body {
+    overflow: hidden;
+}
+
+.modal-alert {
+    z-index: 999;
+}
+.modal-alert .modal-dialog {
+    max-width: 320px;
+}
+.modal-alert .modal-content {
+    transform: translateY(-60px);
+}

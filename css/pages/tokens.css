@@ -1,0 +1,137 @@
+.page[path=tokens] .batch {
+	
+}
+
+.page .results {
+    max-width: 958px;
+    margin: 12px auto 24px auto;
+}
+.page .results .token {
+    padding: 18px 0 18px 0;
+    border-bottom: 1px solid #ccc;
+}
+.page .results .head {
+    word-break: break-all;
+    padding-bottom: 12px;
+}
+.page .results .foot {
+    padding-top: 12px;
+    text-align: right;
+}
+
+.page .results .id {
+    font-size: 18px;
+    color: #79c;
+    padding-right: 18px;
+}
+.page .results .name {
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Circular Std', sans-serif;
+}
+.page .results .token table {
+    width: 100%;
+}
+.page .results .label {
+    padding-right: 18px;
+}
+.page .results .code {
+    width: 100%;
+    font-family: 'Roboto Mono', monospace;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: #eee;
+    padding: 6px 10px 6px 10px;
+    word-break: break-all;
+    position: relative;
+}
+.page .results .message {
+    text-align: center;
+    color: #aaa;
+    font-size: 28px;
+    padding: 30px 0 12px 0;
+    font-weight: 300;
+}
+.page .results .edit {
+    border: 1px solid #888;
+    background: #fff;
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    right: -1px;
+    width: 38px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    background: #555;
+    transition: 0.2s all;
+    color: #fff;
+}
+.page .results .edit:hover {
+    background: #333;
+    border: 1px solid #333;
+    -webkit-box-shadow: 0px 0px 5px 0px #555;
+    box-shadow: 0px 0px 5px 0px #555;
+}
+
+.page .results .edit:hover {
+    background: #333;
+    color: #fff;
+}
+.page .results .edit [class|=icon] {
+    position: absolute;
+    font-size: 18px;
+    top: 50%;
+    left: 50%;
+}
+.page .results .edit .icon-pencil {
+    margin: -12px 0 0 -12px;
+}
+.page .results .edit .icon-key {
+    margin: -11px 0 0 -12px;
+    font-size: 17px;
+}
+.page .results .edit .icon-plus {
+    margin: -10px 0 0 -12px;
+	font-size: 17px;
+}
+.page .results .icon-link-ext {
+    margin-left: 6px;
+}
+
+.page .results .code.editable {
+    padding-right: 45px;
+}
+.page .results .empty {
+    color: #999;
+    user-select: none;
+}
+
+/* ====== EDIT ===== */
+
+.edit-body {
+    padding: 18px;
+}
+.edit-body table {
+	width: 100%;
+}
+.edit-body .label {
+	padding-right: 6px;
+}
+.edit-body .label {
+	word-break: keep-all;
+}
+.edit-body .value input {
+	width: 100%;
+}
+.edit-footer {
+    padding: 12px 20px 12px 20px;
+    text-align: center;
+}
+.edit-footer .spacer {
+    width: 20px;
+    height: 10px;
+    display: inline-block;
+}
+.edit-footer button {
+	width: 100px;
+}

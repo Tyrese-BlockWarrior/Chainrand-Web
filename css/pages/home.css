@@ -1,0 +1,270 @@
+/* ====== MINT ====== */
+
+.page[path=home] {
+    margin-top: -30px;
+}
+
+.page[path=home] .splash {
+    position: relative;
+    color: #36b;
+}
+.page[path=home] .splash .front {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.page[path=home] .splash .title {
+    font-size: 55px;
+    font-family: 'Circular Std', sans-serif;
+    font-weight: 300;
+    padding: 16px 36px 16px 36px;
+    color: #333;
+}
+.page[path=home] .splash .tagline {
+    font-size: 25px;
+    padding: 16px 36px 16px 36px;
+    color: #25a;
+}
+.page[path=home] .splash .buttons .spacer {
+    display: inline-block;
+    width: 18px;
+    height: 2px;
+
+}
+.page[path=home] .splash .buttons a {
+    display: inline-block;
+    width: 120px;
+    position: relative;
+    text-decoration: none;
+    color: #359;
+    font-size: 20px;
+}
+.page[path=home] .splash .buttons a div {
+    padding: 15px 0 15px 0;
+    width: 120px;
+}
+.page[path=home] .splash .buttons [class|=b] {
+    display: block;
+    width: 100%; 
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 5px;
+    transition: 0.2s opacity;
+}
+.page[path=home] .splash .buttons a .b-0 {
+    border: 2px solid #359;
+    opacity: 1;
+}
+.page[path=home] .splash .buttons a .b-1 {
+    opacity: 0;
+    background: #359;
+    -webkit-box-shadow: 0px 0px 8px 0px #359;
+    box-shadow: 0px 0px 8px 0px #359;
+}
+.page[path=home] .splash .buttons a:hover {
+    color: #fff;
+}
+.page[path=home] .splash .buttons a:hover .b-0 {
+    opacity: 0;
+}
+.page[path=home] .splash .buttons a:hover .b-1 {
+    opacity: 1;
+}
+.page[path=home] .splash .buttons {
+    padding: 16px;
+}
+
+/* ====== INTRO ====== */
+
+.page[path=home] .s-intro {
+    background: #333;
+    color: #fff;   
+}
+.page[path=home] .s-intro .title {
+    font-size: 45px;
+    line-height: 1.2;
+}
+.page[path=home] .s-intro .text {
+    font-size: 18px;
+    line-height: 1.5;
+}
+.page[path=home] .s-intro .desktop td {
+    vertical-align: top;
+}
+.page[path=home] .s-intro .desktop .t-0 {
+    padding-right: 50px;
+    padding-top: 20px;
+}
+.page[path=home] .s-intro .desktop .text {
+    border-left: 1px solid #666;
+    padding-left: 50px;
+}
+.page[path=home] .s-intro .desktop table {
+    width: 100%;
+}
+.page[path=home] .s-intro .desktop {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px;
+}
+.page[path=home] .s-intro .mobile {
+    padding: 56px 30px 56px 30px;
+}
+.page[path=home] .s-intro .mobile .title {
+    padding-bottom: 16px;
+}
+.page[path=home] .s-intro .mobile .text {
+
+}
+
+/* ====== APPLICATIONS ====== */
+
+.page[path=home] .s-applications {
+    background: #ddd;
+    color: #111;   
+    text-align: center;
+}
+.page[path=home] .s-applications .title {
+    font-size: 30px;
+    padding: 36px;
+    line-height: 1.2;
+    color: #58d;
+}
+.page[path=home] .s-applications .desktop {
+    
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.page[path=home] .s-applications .desktop .spacer {
+    display: inline-block;
+    height: 2px;
+    width: 9%;
+    min-width: 36px;
+}
+.page[path=home] .s-applications .desktop .field {
+    width: 15%;
+    max-width: 150px;
+    display: inline-block;
+    padding-bottom: 36px;
+}
+.page[path=home] .s-applications .text {
+    padding: 12px 0 12px 0;
+    color: #359;
+    font-size: 20px;
+}
+
+.page[path=home] .s-applications .mobile .spacer {
+    display: inline-block;
+    height: 2px;
+    width: 15%;
+    min-width: 25px;
+}
+.page[path=home] .s-applications .mobile .field {
+    width: 28%;
+    display: inline-block;
+    padding-bottom: 36px;
+}
+.page[path=home] .s-applications img {
+    width: 100%;
+    opacity: 0.8;
+}
+
+.page[path=home] .s-started {
+    background-color: #3F5986;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 450 1300'%3E%3Crect fill='%233F5986' x='-50' y='-130' width='550' height='390'/%3E%3Cpolygon fill='%233d5783' points='75 -130 0 0 75 130 150 0'/%3E%3Crect fill='%233b5481' x='-50' y='130' width='550' height='260'/%3E%3Cpolygon fill='%2338527e' points='300 0 225 130 300 260 375 130'/%3E%3Crect fill='%2336507b' x='-50' y='260' width='550' height='260'/%3E%3Cpolygon fill='%23344e78' points='75 130 0 260 75 390 150 260'/%3E%3Crect fill='%23324b76' x='-50' y='390' width='550' height='260'/%3E%3Cpolygon fill='%23304973' points='300 260 225 390 300 520 375 390'/%3E%3Crect fill='%232e4770' x='-50' y='520' width='550' height='260'/%3E%3Cpolygon fill='%232b456e' points='75 390 0 520 75 650 150 520'/%3E%3Crect fill='%2329426b' x='-50' y='650' width='550' height='260'/%3E%3Cpolygon fill='%23274069' points='300 520 225 650 300 780 375 650'/%3E%3Crect fill='%23253e66' x='-50' y='780' width='550' height='260'/%3E%3Cpolygon fill='%23233c63' points='75 650 0 780 75 910 150 780'/%3E%3Crect fill='%23203a61' x='-50' y='910' width='550' height='260'/%3E%3Cpolygon fill='%231e385e' points='300 780 225 910 300 1040 375 910'/%3E%3Crect fill='%231c355c' x='-50' y='1040' width='550' height='260'/%3E%3Cpolygon fill='%231a3359' points='75 910 0 1040 75 1170 150 1040'/%3E%3Crect fill='%23173157' x='-50' y='1170' width='550' height='260'/%3E%3Cpolygon fill='%23152f54' points='300 1040 225 1170 300 1300 375 1170'/%3E%3Crect fill='%23122d52' x='-50' y='1300' width='550' height='260'/%3E%3Cpolygon fill='%23102B4F' points='75 1170 0 1300 75 1430 150 1300'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.5;
+}
+.page[path=home] .s-started a {
+    color: #ace;
+}
+.page[path=home] .s-started .desktop {
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 50px 30px 50px 30px;
+}
+.page[path=home] .s-started .desktop td {
+    vertical-align: top;
+}
+.page[path=home] .s-started .info {
+    padding: 36px 0 36px 0;
+}
+.page[path=home] .s-started .desktop .lang img {
+    width: 100%;
+}
+.page[path=home] .s-started .desktop .lang div {   
+    padding: 12px 0 12px 0;
+}
+.page[path=home] .s-started .desktop .lang {
+    width: 15%;
+    max-width: 118px;
+    margin: 0 24px 0 24px;
+    text-align: center;
+    display: inline-block;
+}
+.page[path=home] .s-started .desktop .sdks {
+    margin: 0 -24px 0 -24px;
+}
+
+
+.page[path=home] .s-started .title {
+    font-size: 45px;
+}
+.page[path=home] .s-started .desktop .t-0 {
+    padding-right: 12px;
+}
+.page[path=home] .s-started .desktop .t-1 {
+    padding-left: 12px;
+    width: 38%;
+}
+
+.page[path=home] .s-started .step {
+    border: 1px solid #ace;
+    padding: 16px 20px 16px 20px; 
+    border-radius: 5px;
+}
+.page[path=home] .s-started .arrow {
+    text-align: center;
+    padding: 8px 0 8px 0;
+    font-size: 30px;
+    color: #ace;
+}
+.page[path=home] .s-started .desktop .process {
+    margin-top: 12px;
+}
+
+
+.page[path=home] .s-started .mobile {
+    padding: 56px 30px 56px 30px;
+}
+
+.page[path=home] .s-started .mobile .lang img {
+    width: 100%;
+}
+.page[path=home] .s-started .mobile .lang div {   
+    padding: 12px 0 12px 0;
+}
+.page[path=home] .s-started .mobile .lang {
+    width: 15%;
+    max-width: 118px;
+    min-width: 90px;
+    margin: 0 24px 0 24px;
+    text-align: center;
+    display: inline-block;
+}
+.page[path=home] .s-started .mobile .sdks {
+    margin: 0 -24px 0 -24px;
+}
+.page[path=home] .s-started .mobile .subtitle { 
+    font-size: 32px;
+    padding: 36px 0 24px 0;
+}
