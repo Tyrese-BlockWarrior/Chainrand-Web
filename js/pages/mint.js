@@ -240,20 +240,52 @@
 			.val("https://sdw.mypinata.cloud/ipfs/QmUVQq4cvMcMVbdgRCeNzZEtF1EU4JmyqzoSdycxUAqNTz");
 	}
 
+	var waitForRandomness = function () {
+
+		var consecDone = 0, prevId = -1;
+		var recurse = function () {
+			if (W.isSignedIn()) {
+				W.callContract('chainrand', 'balanceOf', W.walletAddress, function (c) {
+					console.log(c);
+					c = parseInt(c, 10) - 1;
+					if (c >= 0 && W.isSignedIn())
+						W.callContract('chainrand', 'tokens', c, function (t) {
+							console.log(t);
+							var r = t.randomness + '';
+							if (r != '0') {
+								consecDone++;
+								if (prevId != c) {
+									tokensSyncCounter++;
+									Layout.sync();
+									prevId = c;
+								}
+							} 
+							if (consecDone < 2)
+								setTimeout(recurse, 1000 * 30);
+						})
+				})	
+			}
+		}
+		setTimeout(recurse, 1000 * 15);
+	}
+
 	var onMinted = function (txHash) {
 		clearForm();
-		modal.alert('Mint submitted!');
+		modal.alert('Mint submitted. <br>The tokens page will auto-refresh.');
 		window.location.hash = '#/tokens';
+		 
 		setTimeout(function () { 
 			W.waitTransactionMined(txHash, function () {
 				console.log("TX Done!");
+				tokensSyncCounter++;
+				waitForRandomness();
 				Layout.sync();
 			})
 		}, 30);
 		console.log(txHash);
 	}
 	
-	window._onMinted = onMinted;
+	/* DEV_ONLY */ window._onMinted = onMinted;
 
 	var mint = function (data) {
 		var t = transform(data);
@@ -315,7 +347,7 @@
 	}
 
 	var sync = function () {
-		// setTimeout(testPopulate, 300);
+		/* DEV_ONLY */ setTimeout(testPopulate, 300);
 		walletConnector.sync('mint');
 		if (W.chainId) {
 			W.callContract('chainrand', 'vrfFee', function (result) {

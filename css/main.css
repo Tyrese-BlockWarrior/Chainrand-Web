@@ -381,11 +381,13 @@ select:focus {
     font-weight: 500;
     font-family: 'Circular Std', sans-serif;
     text-align: center;
-    padding: 6px 0 6px 0;
 }
 .wallet .info {
+    display: inline-block;
     opacity: 0.5;
     transition: 0.2s opacity;
+    padding: 6px 18px 6px 18px;
+    margin: 0;
 }
 .wallet .info.unconnected {
     opacity: 0.5;
@@ -400,3 +402,10 @@ select:focus {
     margin: 0 auto;
 }
 
+.tippy-supported {
+    text-align: center;
+    padding: 2px;
+}
+.tippy-supported div {
+    padding-top: 2px;
+}

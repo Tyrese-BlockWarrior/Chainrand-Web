@@ -49,8 +49,10 @@
     text-align: center;
     color: #aaa;
     font-size: 28px;
-    padding: 30px 0 12px 0;
+    padding: 30px 30px 12px 30px;
+    font-family: 'Circular Std', sans-serif;
     font-weight: 300;
+    line-height: 1.5;
 }
 .page .results .edit {
     border: 1px solid #888;

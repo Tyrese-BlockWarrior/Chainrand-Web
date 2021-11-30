@@ -29,26 +29,23 @@
 			'st *= grid;', 
 			'vec2 ipos = floor(st);', 
 			'vec2 vel = vec2(u_time*10.);', 
-			'vel *= vec2(-1.,0.);', 
-			'vel *= (step(1., mod(ipos.y,2.0))-0.5)*2.; // Opposite directions', 
-			'vel *= random(ipos.y); // random speed', 
+			'vel *= vec2(-1.,0.)*(step(1.,mod(ipos.y,2.0))-0.5)*2.*random(ipos.y);', 
 			'vec3 color = vec3(1.0);', 
 			'color *= step(grid.y,ipos.y);', 
 			'color += step(0.0,ipos.y);', 
 			'color = clamp(color,vec3(0.),vec3(1.));', 
-			'float fadeFactor = abs(u_mouse.y/u_resolution.y-0.5);', 
-			'fadeFactor = fadeFactor + abs(u_mouse.x/u_resolution.x-0.5);', 
-			'fadeFactor = 0.5 + clamp(fadeFactor * 0.5, 0.1, 0.5) * 0.5;', 
+			'float thres = abs(u_mouse.y/u_resolution.y-.5);', 
+			'thres = thres + abs(u_mouse.x/u_resolution.x-.5);', 
+			'thres = .5+clamp(thres*.5,.1,.5)*.5;', 
 			'color *= random(floor(st+vel));', 
-			'color = smoothstep(0.0, fadeFactor, color*color);', 
-			'color = step(fadeFactor,color); // threshold',
-			'// Margin', 
-			'float margin = 0.2;', 
+			'color = smoothstep(0.,thres,color*color);', 
+			'color = step(thres,color);',
+			'float margin = .2;', 
 			'color *= step(margin,fract(st.x+vel.x))*step(margin,fract(st.y+vel.y));', 
-			'gl_FragColor = vec4(1.90-color,1.0);', 
+			'gl_FragColor = vec4(1.9-color,1.);', 
 		'}'].join('\n');
 
-	var $page, $window, $canvas;
+	var $page, $window, $canvas, $front, $startedBg;
 
 	var canvas, gl, uUniform, uBuffer;
 	var canvasWidth, canvasHeight, canvasMouseX, canvasMouseY;
@@ -64,17 +61,17 @@
 			['div', {class: 'front'}, 
 				['div', {class: 'title'}, 'Fair Randomness Anywhere'],
 				['div', {class: 'tagline'}, 
-					'Generate verfiable random numbers efficiently without limits'],
+					'Generate verifiable random numbers efficiently without limits'],
 				['div', {class: 'buttons'},
 					['a', {class: 'mint', href: '#/mint'}, 
-						['div','Mint'], ['div', {class: 'b-0'}], ['div', {class: 'b-1'}]
+						['div', ['i', {class: 'icon-diamond'}], ' ', 'Mint'], ['div', {class: 'b-0'}], ['div', {class: 'b-1'}]
 					],
-					['div', {class: 'spacer'}],
 					['a', {class: 'github', href: githubURL, target: '_blank'}, 
-						['div','Github'], ['div', {class: 'b-0'}], ['div', {class: 'b-1'}]
+						['div', ['i', {class: 'icon-github-circled'}], ' ', 'Github'], ['div', {class: 'b-0'}], ['div', {class: 'b-1'}]
 					],
 				]
-			]
+			], 
+			['div', {class: 'overscroll'}]
 		]
 	]; 
 
@@ -200,23 +197,11 @@
 			t0, 
 			['div', {class: 'subtitle'}, 'The Process'], 
 			t1
-		]
+		], 
+		['div', {class: 'bg'}]
 	];
 	contentCtx.push(startedCtx);
-	// 	['div', {class: 'applications'}, // white bg
-	// 		['div', {class: 'title'}, 'Applications'],
-			
-	// 	], 
-	// 	['div', {class: 'started'}, 
-	// 		['div', {class: 'title'}, 'Getting started'],
-
-	// 	]
-	// ];
-
-	// Write off-chain determinstic RNG code with a Chainrand SDK.  
-	// Generate RNG seed for the RNG code with Chainrand.
-	// Reveal the results of the RNG code with Chainrand.
-
+	
 	var createVBO = function (program, data, dims, name) {
 		var vbo = gl.createBuffer();
 		gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
@@ -238,6 +223,7 @@
 				return window.setTimeout(callback, 1000 / 60);
 			};
 	})();
+
 	var cancelAnimFrame = (function(){
 		return window.cancelAnimationFrame ||
 			window.webkitCancelAnimationFrame ||
@@ -253,11 +239,21 @@
 			var vw = $window.width();
 			var vh = $window.height();
 			if (vw != prevVW || vh != prevVH) {
-				canvas.height = canvasHeight = Math.max(350, vh * 0.7)
-				canvas.width = canvasWidth = vw;
+				canvasHeight = Math.max(350, vh * 0.7);
+				canvasWidth = vw;
+
+				var fh = $front.height();
+				canvasHeight = Math.max(canvasHeight, fh * 1.28);
+
+				canvas.height = canvasHeight;
+				canvas.width = canvasWidth;
 				gl.viewport(0, 0, canvasWidth, canvasHeight);
 				prevVH = vh; 
 				prevVW = vw;
+				$startedBg.css({
+					width: Math.ceil(vw), 
+					height: Math.ceil(vh*1.2)
+				});
 			}
 			uBuffer[0] = canvasWidth; 
 			uBuffer[1] = canvasHeight; 
@@ -266,8 +262,7 @@
 			uBuffer[4] = canvasTime;
 			canvasTime += 0.005 * animTickerMod; 
 			gl.uniform1fv(uUniform, uBuffer);
-			// gl.clearColor(0.0, 0.0, 0.0, 1.0);
-			gl.clear(gl.COLOR_BUFFER_BIT);
+			
 			gl.drawArrays(gl.TRIANGLES, 0, 6);
 		}
 		animTicker = (animTicker + 1) % animTickerMod;
@@ -278,6 +273,8 @@
 
 	var setupCanvas = function () {
 		$canvas = $page.find('canvas'); 
+		$front = $page.find('.splash .front'); 
+		$startedBg = $page.find('.s-started .bg');
 		canvas = $canvas[0];
 		gl = canvas.getContext('webgl');
 		

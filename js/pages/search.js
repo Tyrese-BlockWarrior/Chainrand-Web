@@ -81,9 +81,9 @@
 					e.push({class: 'editable'}, 
 						['div', {class: 'edit', tokenId: t.id}, iconCtx]);
 				}
-				rowsCtx.push(['tr',
+				rowsCtx.push(['tr', 
 					['td', {class: 'label'}, label + ': '],
-					['td', {class: 'value'}, e],
+					['td', {class: 'value', name: name}, e],
 				]);	
 			}
 		};
@@ -127,12 +127,14 @@
 		var d = ++displayNonce;
 		var waitSync = function () {
 			if (W.config) {
+				var tempId = elId();
 				var resultsCtx = ['div', tokens, function (t) {
 					return genTokenCtx(t, chainId)
-				}];
+				}, {id: tempId}];
 				if (d == displayNonce) {
 					$page.find('.results').html(HTML(resultsCtx));
 				}
+				addTokenTippys(tempId);
 			} else if (nTriesLeft > 0) {
 				nTriesLeft--;
 				setTimeout(waitSync, 500);

@@ -1,5 +1,7 @@
 $(function () {
-    Layout.init()
+		
+    Layout.init();
+
     $.ajax({
         url: CONTRACTS_CONFIG_URL,
         success: function (e) {

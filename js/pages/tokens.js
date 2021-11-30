@@ -169,9 +169,9 @@
 					e.push({class: 'editable'}, 
 						['div', {class: 'edit', tokenId: t.id, name: name, label: label}, iconCtx]);
 				}
-				rowsCtx.push(['tr',
+				rowsCtx.push(['tr', 
 					['td', {class: 'label'}, label + ': '],
-					['td', {class: 'value'}, e],
+					['td', {class: 'value', name: name}, e],
 				]);	
 			}
 		};
@@ -218,7 +218,8 @@
 					$next.attr('done', '1');
 					var chainId = $next.attr('chainId');
 					var step = dataFields.length;
-					var ctx = ['div'];
+					var tempId = elId();
+					var ctx = ['div', {id: tempId}];
 					for (var i = 0; i < data.length; i += step) {
 						var t = {};
 						for (var j = 0; j < step; ++j)
@@ -226,6 +227,7 @@
 						ctx.push(genTokenCtx(t, chainId));
 					}
 					$next.html(HTML(ctx)).find('.edit').click(edit);
+					addTokenTippys(tempId)
 				});
 		}
 	}
@@ -253,9 +255,14 @@
 			displayPageMessage('Wallet has no tokens.');
 			return
 		}
+		var bypass = 0;
+		if (tokensSyncCounter > 0){
+			tokensSyncCounter--;
+			bypass = 1;
+		}
 
 		var currDisplayed = tokenIds.join(',') + '/' + walletAddress + '/' + chainId;
-		if (currDisplayed == displayed) return;
+		if (currDisplayed == displayed && !bypass) return;
 
 		var batchesCtx = ['div', {class: 'batches'}];
 		var n = tokenIds.length;
@@ -277,14 +284,19 @@
 		$page.find('.results').html(HTML(batchesCtx));
 		retrieveNextBatch();
 	}
-	window._fx = function () {
+	/* DEV_ONLY */ window._fx = function () {
 		window._onMinted('0x7e05cc3ad782da6cf5aa38195d8f91080e6f967f4799dc5a2c2098daef41b3ac');
 	}
-	window._ret = retrieveNextBatch;
+	/* DEV_ONLY */ window._ret = retrieveNextBatch;
 	var sync = function (sel) {
 		console.log(W.walletAddress + ' ' + W.chainId);
 		if (W.isSignedIn()) {
 			displayPageMessage('Loading...');
+			setTimeout(function () {
+				if (!W.walletAddress && !W.chainUnsupported) {
+					displayPageMessage('Not connected');
+				}
+			}, 1500);
 			W.callContract('chainrand', 'tokensOfOwner', W.walletAddress, 
 				function (tokenIds) {
 					console.log(tokenIds);
@@ -298,6 +310,13 @@
 
 	var show = function () {
 		visible = 1;
+		if (!W.web3) {
+			setTimeout(function () {
+				if (!W.web3) {
+					displayPageMessage('No web3 detected.<br>You need to use a web3 enabled browser.')		
+				}
+			}, 2000);	
+		}
 	}
 
 	var hide = function () {

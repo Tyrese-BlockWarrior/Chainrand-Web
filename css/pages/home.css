@@ -1,5 +1,12 @@
-/* ====== MINT ====== */
-
+.page[path=home] .overscroll {
+    width: 100%;
+    height: 500px;
+    position: absolute;
+    top: -500px;
+    left: 0;
+    background: #fff;
+    z-index: -1;
+}
 .page[path=home] {
     margin-top: -30px;
 }
@@ -23,29 +30,34 @@
     font-weight: 300;
     padding: 16px 36px 16px 36px;
     color: #333;
+    margin-top: 9px;
 }
 .page[path=home] .splash .tagline {
     font-size: 25px;
     padding: 16px 36px 16px 36px;
     color: #25a;
 }
-.page[path=home] .splash .buttons .spacer {
-    display: inline-block;
-    width: 18px;
-    height: 2px;
-
-}
 .page[path=home] .splash .buttons a {
     display: inline-block;
-    width: 120px;
+    width: 138px;
     position: relative;
     text-decoration: none;
     color: #359;
     font-size: 20px;
+    margin: 0 9px 9px 9px;
+}
+.page[path=home] .splash .buttons .mint i {
+    margin: 0px 4px 0 -7px;
+    position: relative;
+    top: -1px;
+    font-size: 18px;
+}
+.page[path=home] .splash .buttons .github i {
+    margin-left: -3px;
 }
 .page[path=home] .splash .buttons a div {
     padding: 15px 0 15px 0;
-    width: 120px;
+    width: 138px;
 }
 .page[path=home] .splash .buttons [class|=b] {
     display: block;
@@ -84,7 +96,11 @@
 /* ====== INTRO ====== */
 
 .page[path=home] .s-intro {
-    background: #333;
+
+    background-color: #333;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 900'%3E%3Cpath fill='%233e3e3e' d='M1157 372L512 900L0 900L0 0L1267 0'/%3E%3Cpath fill='%23383838' d='M1157 372L150 900L0 900L0 0L296 0'/%3E%3Cpath fill='%23303030' d='M1157 372L1410 900L150 900'/%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: 50% 30%;
     color: #fff;   
 }
 .page[path=home] .s-intro .title {
@@ -127,7 +143,8 @@
 /* ====== APPLICATIONS ====== */
 
 .page[path=home] .s-applications {
-    background: #ddd;
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' %3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='0' y1='0' y2='1' gradientTransform='rotate(0,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%23DDDDDD'/%3E%3Cstop offset='1' stop-color='%23CCCCCC'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpattern id='b' width='16' height='16' patternUnits='userSpaceOnUse'%3E%3Ccircle fill='%23ffffff' cx='8' cy='8' r='8'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23a)'/%3E%3Crect width='100%25' height='100%25' fill='url(%23b)' fill-opacity='0.1'/%3E%3C/svg%3E");
     color: #111;   
     text-align: center;
 }
@@ -176,10 +193,16 @@
     opacity: 0.8;
 }
 
-.page[path=home] .s-started {
+.page[path=home] .s-started .bg {
     background-color: #3F5986;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 450 1300'%3E%3Crect fill='%233F5986' x='-50' y='-130' width='550' height='390'/%3E%3Cpolygon fill='%233d5783' points='75 -130 0 0 75 130 150 0'/%3E%3Crect fill='%233b5481' x='-50' y='130' width='550' height='260'/%3E%3Cpolygon fill='%2338527e' points='300 0 225 130 300 260 375 130'/%3E%3Crect fill='%2336507b' x='-50' y='260' width='550' height='260'/%3E%3Cpolygon fill='%23344e78' points='75 130 0 260 75 390 150 260'/%3E%3Crect fill='%23324b76' x='-50' y='390' width='550' height='260'/%3E%3Cpolygon fill='%23304973' points='300 260 225 390 300 520 375 390'/%3E%3Crect fill='%232e4770' x='-50' y='520' width='550' height='260'/%3E%3Cpolygon fill='%232b456e' points='75 390 0 520 75 650 150 520'/%3E%3Crect fill='%2329426b' x='-50' y='650' width='550' height='260'/%3E%3Cpolygon fill='%23274069' points='300 520 225 650 300 780 375 650'/%3E%3Crect fill='%23253e66' x='-50' y='780' width='550' height='260'/%3E%3Cpolygon fill='%23233c63' points='75 650 0 780 75 910 150 780'/%3E%3Crect fill='%23203a61' x='-50' y='910' width='550' height='260'/%3E%3Cpolygon fill='%231e385e' points='300 780 225 910 300 1040 375 910'/%3E%3Crect fill='%231c355c' x='-50' y='1040' width='550' height='260'/%3E%3Cpolygon fill='%231a3359' points='75 910 0 1040 75 1170 150 1040'/%3E%3Crect fill='%23173157' x='-50' y='1170' width='550' height='260'/%3E%3Cpolygon fill='%23152f54' points='300 1040 225 1170 300 1300 375 1170'/%3E%3Crect fill='%23122d52' x='-50' y='1300' width='550' height='260'/%3E%3Cpolygon fill='%23102B4F' points='75 1170 0 1300 75 1430 150 1300'/%3E%3C/svg%3E");
-    background-attachment: fixed;
+    background-position: bottom;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    z-index: -2;
+}
+.page[path=home] .s-started {
     color: #fff;
     font-size: 18px;
     line-height: 1.5;
@@ -267,4 +290,16 @@
 .page[path=home] .s-started .mobile .subtitle { 
     font-size: 32px;
     padding: 36px 0 24px 0;
+}
+@media (max-width: 500px) { /* bootstrap-md (Medium) */
+    .page[path=home] .s-started .mobile .lang {
+        width: 33.33333%;
+        margin: 0;
+        max-width: 999px;
+        padding: 0 24px 0 24px;
+        min-width: 0;
+    }
+    .page[path=home] .s-started .mobile .sdks {
+        margin: 0 -2px 0 -24px;
+    }
 }
