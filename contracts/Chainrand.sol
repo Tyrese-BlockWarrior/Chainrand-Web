@@ -8,10 +8,11 @@ import "@chainlink/contracts@0.2.2/src/v0.8/VRFConsumerBase.sol";
 
 import "@openzeppelin/contracts@4.3.2/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts@4.3.2/access/Ownable.sol";
+import "@openzeppelin/contracts@4.3.2/security/ReentrancyGuard.sol";
 
 import "base64-sol/base64.sol";
 
-contract Chainrand is VRFConsumerBase, ERC721Enumerable, Ownable {
+contract Chainrand is VRFConsumerBase, ERC721Enumerable, Ownable, ReentrancyGuard {
     
     using Strings for uint;
 
@@ -100,7 +101,7 @@ contract Chainrand is VRFConsumerBase, ERC721Enumerable, Ownable {
     /// @dev Mint a Chainrand token.
     function mint(string memory _name, uint _seedKeyHash, uint _codeHash, 
         string memory _codeURI, string memory _imageURI, string memory _projectURI) 
-    public payable {
+    public payable nonReentrant {
         require(LINK.transferFrom(msg.sender, address(this), vrfFee), "LINK payment failed.");
         require(mintFee <= msg.value, "Insufficient payment.");
         
